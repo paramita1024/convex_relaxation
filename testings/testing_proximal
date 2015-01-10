@@ -1,0 +1,11 @@
+
+z = [1 0 0 1 ];
+lambda = 1;
+opts.lambda = lambda;
+opts.X =[];
+opts.Y = [];
+dim_x = 10;
+opts.V = 1:dim_x;
+opts.handle = f_r(dim_x);
+
+x =proximal( z, lambda, opts);

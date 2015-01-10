@@ -1,0 +1,4 @@
+
+function g = gradient_pen(w, opts)
+    g = (1/length(opts.Y))*opts.X'*(opts.X*w - opts.Y);
+end

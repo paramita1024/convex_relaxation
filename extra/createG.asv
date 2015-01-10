@@ -1,0 +1,11 @@
+function [G ] = createG( n , no_of_cls  )
+n = 50;
+no_of_cls = 10;
+G = zeros( n, no_of_cls );
+val = rand( n , 1);
+
+for i =1:n
+        G(i,ceil( val(i)*10 ))=1;
+end
+dlmwrite( )
+        
