@@ -1,10 +1,6 @@
 clear;
 clc;
 
-addpath(genpath('C:/Users/paramita/Documents/MATLAB/convex relaxation'))
-%requires to be changed
-%addpath(genpath('/home/paramita/Documents/MATLAB/convex relaxation'))
-
 min_sample=50;
 diff = 25;
 max_sample=750;
