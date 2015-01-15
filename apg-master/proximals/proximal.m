@@ -40,17 +40,17 @@ F = f_minus_t(f_handle,t);
 A_new = sfo_min_norm_point(F, V , opts);
 disp('minimization end')
 disp('minimizer set')
-disp(A_new)
-if( isempty(V) ) 
-    disp('argmin(A \in V ) (F-t)(A)  is empty');
-end 
+disp(F(A_new))
+%if( isempty(V) ) 
+    %disp('argmin(A \in V ) (F-t)(A)  is empty');
+%end 
 % 
 % 
-if isequal( A_new,V )
-    disp('minimizer equals V ')
+if f_handle(A_new) == sum(t(A_new))
+    disp('t is inside polytope of F ')
     x = zeros(1, n);
     temp = norm_z - lambda*sqrt( f_handle( V ) );
-    if temp >= 0
+    if temp > 0
         x = (temp/norm(z))*z;
     end
     disp('proximal ends')

@@ -1,9 +1,8 @@
 clear;
 num_elm = 10;
 V = 1:num_elm;
-% construct G
 load G.mat;
-F = sfo_fn_cutfun(G)
+F = sfo_fn_cutfun(G);
 opt =[];
 b = 1;
 a = -1;
