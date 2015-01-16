@@ -1,16 +1,29 @@
 clear;
+dim_x = 32;
+no_of_zero = 10;
+z = rand(1,dim_x);
+%null_index = randi([1 , dim_x] , 1 , no_of_zero);
+null_index = 1:no_of_zero;
+z(null_index) = 0;
+lambda = .01;
 
-z = [1 0 0 1  0 0 0 1 1 1 ];
-lambda = 1;
 opts.lambda = lambda;
 opts.X =[];
 opts.Y = [];
-dim_x = 10;
 opts.V = 1:dim_x;
 opts.handle = f_r(dim_x);
 
-x =proximal( z, lambda, opts);
 
+
+
+x_omega_norm =proximal( z, lambda, opts);
+
+x_L2_norm =proximal_L2_norm( z, lambda, opts);
+
+plot(1:dim_x , x_omega_norm , 'r', 1:dim_x, z,'b*' , 1:dim_x , x_L2_norm , 'g');
+
+%plot(1:dim_x , x , 'r', 1:dim_x, z,'b');
+%plot(1:dim_x,expand_new(null_index,dim_x),'r',1:dim_x,z,'b');
 %**************************************************************************
 
 % %testing function f_r

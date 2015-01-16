@@ -34,7 +34,7 @@ t = zeros(1,n);
 for i=1:n
     t(i) = z(i)*z(i);
 end
-t = (t*f_handle(V)) / norm_z;
+t = (t*f_handle(V)) / (norm_z*norm_z);
 F = f_minus_t(f_handle,t);
 %A = sfo_queyranne(F,V);
 A_new = sfo_min_norm_point(F, V , opts);
@@ -56,7 +56,10 @@ if f_handle(A_new) == sum(t(A_new))
     disp('proximal ends')
     return
 end
-disp('minimizer less than V')
+
+disp('t is outside')
+
+
 f_restricted = restrict(f_handle, A_new );
 f_modified = modify(f_restricted , A_new);
 opts.handle=f_modified;

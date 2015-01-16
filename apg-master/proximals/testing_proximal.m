@@ -1,10 +1,10 @@
 clear;
 clc;
-delete('t.txt', 'A.txt', 'log.txt');
+%delete('t.txt', 'A.txt', 'log.txt');
 
 dim_x = 32;
 z = rand(1,dim_x);
-z(1:7)=0;
+%z(1:7)=0;
 lambda = .05;
 opts.lambda = lambda;
 opts.X =[];
@@ -13,7 +13,7 @@ opts.V = 1:dim_x;
 opts.handle = f_r(dim_x);
 
 x =proximal( z, lambda, opts);
-
+plot(1:dim_x, x , 'r',1:dim_x,z,'b');
 %**************************************************************************
 
 % %testing function f_r

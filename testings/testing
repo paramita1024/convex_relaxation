@@ -1,6 +1,0 @@
-clear ;
-dim_x = 5;
-mu = zeros(1, dim_x);
-    sigma = diag( ones( 1,dim_x ) );
-    
-    epsilon = mvnrnd( mu , sigma );
