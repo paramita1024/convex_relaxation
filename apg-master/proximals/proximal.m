@@ -3,6 +3,9 @@ function [ x ]=proximal( z, lambda, opts)
 % output w
 % computes proximal_{\lambda * \omega_p} (z)
 
+if size(z,2)==1
+    z = z';
+end
 opts.X=[];
 opts.Y=[];
 f_handle = opts.handle;
@@ -17,6 +20,10 @@ if( isempty(V) )
     disp('working set V is empty');
 end
 if length(A)<n
+    if length(A) == 0
+        
+        return 
+    end
     disp('support of z is a subset V')
     f_restricted = restrict(f_handle, A);
     f_modified = modify(f_restricted , A);
@@ -54,6 +61,7 @@ if f_handle(A_new) == sum(t(A_new))
         x = (temp/norm(z))*z;
     end
     disp('proximal ends')
+    
     return
 end
 
