@@ -1,6 +1,5 @@
 clear;
 clc;
-
 min_sample=50;
 diff = 25;
 max_sample=750;
@@ -11,8 +10,6 @@ max_itr = 1;
 hamming_dist = zeros(1,max_sample);
 l2_dist = zeros(1,max_sample);
 lambda = .5;
-
-
 opts = [];
 %opts.handle = @f_group_count;%give function handle
 %opts.V = 1:dim;
@@ -22,7 +19,6 @@ opts = [];
 opts.handle = f_r(dim);
 opts.lambda = lambda;
 opts.GEN_PLOTS = false;
-
 for itr = 1:max_itr
     data = create_data( dim , supp , max_sample  );
     disp(itr)

@@ -1,3 +1,4 @@
+disp('I am adding this line to check git')
 % clear ;
 % dim_x = 5;
 % sample_size = [10];
