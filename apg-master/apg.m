@@ -91,7 +91,7 @@ for k=1:MAX_ITERS
     
     if ~isempty(prox_h)
         x = prox_h(x,t,opts);
-        x = x';
+        %x = x';
     end
     
     err1 = norm(y-x)/max(1,norm(x));

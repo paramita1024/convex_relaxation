@@ -17,7 +17,7 @@ lambda = .5;
 opts = [];
 opts.handle = f_r(dim);
 opts.lambda = lambda;
-opts.GEN_PLOTS = false;
+opts.GEN_PLOTS = true;
 opts.V = 1:dim;
 
 %for itr = 1:max_itr
@@ -31,13 +31,12 @@ opts.V = 1:dim;
         
         %w_lasso = apg(@gradient_lasso, @proximal_lasso, size(opts.X,2), opts);
         w_omega_norm = apg(@gradient_pen, @proximal, size(opts.X,2), opts);
-        %w_L2_norm = apg(@gradient_lasso, @proximal_lasso, size(opts.X,2), opts);
+        %w_L2_norm = apg(@gradient_pen, @proximal_L2_norm, size(opts.X,2), opts);
         %hamming_dist(sample_size) = (hamming_dist(sample_size)*itr+ pdist([w' ; data.w0'] , 'hamming') )/(itr+1);
         %l2_dist(sample_size) = (l2_dist(sample_size)*itr+ pdist([w' ; data.w0'] , 'euclidean') )/(itr+1);
         
  %   end
 %end
-
 %code for plotting dimension of w versus l2 and hamming distance between
 %solution and optimal
 %figure

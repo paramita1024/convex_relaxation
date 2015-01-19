@@ -3,7 +3,7 @@ function [ x ]=proximal( z, lambda, opts)
 % output w
 % computes proximal_{\lambda * \omega_p} (z)
 
-if size(z,2)==1
+if size(z,1)==1
     z = z';
 end
 opts.X=[];
@@ -13,13 +13,14 @@ V = opts.V;
 n=length(z);
 %disp(V)
 
-x = zeros( 1, n  );
 A = find(z);
 disp('proximal starts')
 if( isempty(V) ) 
     disp('working set V is empty');
 end
 if length(A)<n
+    
+    x = zeros( n,1 );
     if length(A) == 0
         
         return 
@@ -37,7 +38,7 @@ end
 disp('support of z is V')
 disp('minimization start')
 norm_z = norm(z);
-t = zeros(1,n);
+t = zeros(n,1);
 for i=1:n
     t(i) = z(i)*z(i);
 end
@@ -55,7 +56,7 @@ disp(F(A_new))
 % 
 if f_handle(A_new) == sum(t(A_new))
     disp('t is inside polytope of F ')
-    x = zeros(1, n);
+    x = zeros( n,1 );
     temp = norm_z - lambda*sqrt( f_handle( V ) );
     if temp > 0
         x = (temp/norm(z))*z;
