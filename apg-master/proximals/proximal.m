@@ -3,7 +3,7 @@ function [ x ]=proximal( z, lambda, opts)
 % output w
 % computes proximal_{\lambda * \omega_p} (z)
 
-if size(z,1)==1
+if size(z,1) == 1
     z = z';
 end
 opts.X=[];
@@ -21,7 +21,7 @@ end
 if length(A)<n
     
     x = zeros( n,1 );
-    if length(A) == 0
+    if isempty(A)
         
         return 
     end
@@ -42,7 +42,7 @@ t = zeros(n,1);
 for i=1:n
     t(i) = z(i)*z(i);
 end
-t = (t*f_handle(V)) / (norm_z*norm_z);
+t = t*(f_handle(V)/(norm_z*norm_z));
 F = f_minus_t(f_handle,t);
 %A = sfo_queyranne(F,V);
 A_new = sfo_min_norm_point(F, V , opts);
@@ -85,3 +85,7 @@ opts.handle=f_modified;
 opts.V = 1:length(A_c);
 x(A_c) = proximal(z(A_c),lambda , opts);%f_contracted, A_c
 disp('proximal ends')
+
+if size(x,1) == 1 
+    x = x';
+end

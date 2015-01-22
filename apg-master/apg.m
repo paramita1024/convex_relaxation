@@ -88,12 +88,12 @@ for k=1:MAX_ITERS
     y_old = y;
     
     x = y - t*g;
-    
+    disp('apg to proximal')
     if ~isempty(prox_h)
         x = prox_h(x,t,opts);
         %x = x';
     end
-    
+    disp('proximal to  apg')
     err1 = norm(y-x)/max(1,norm(x));
     disp('err at apg')
     disp(err1)
